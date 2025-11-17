@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funding Portal - Hospital Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-heart-pulse-fill text-primary me-2 fs-4"></i>
+                <span class="fw-bold">HMS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="departments.html">Departments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="emergency.html">Emergency</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-primary text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Funding Portal</h1>
+            <p class="lead mb-4">Financial assistance for medical treatments through NGO support</p>
+            <button class="btn btn-light btn-lg" id="fundBtn">
+                <i class="bi bi-cash-coin me-2"></i>FUNDING
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- NGO Dashboard -->
+        <section id="ngo-dashboard" class="d-none">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">NGO Dashboard</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4" id="ngoGrid"></div>
+                    <button class="btn btn-secondary mt-3" id="btn-logout">Logout</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Form -->
+        <section id="patient-form" class="d-none">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Add Patient Funding Request</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Patient Name</label>
+                                <input type="text" class="form-control" id="p_name" placeholder="Full Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Age</label>
+                                <input type="number" class="form-control" id="p_age" placeholder="e.g. 45">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Condition / Disease</label>
+                                <input type="text" class="form-control" id="p_condition" placeholder="Short description">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Required Amount (USD)</label>
+                                <input type="number" class="form-control" id="p_amount" placeholder="e.g. 500">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Select NGO</label>
+                                <input type="text" class="form-control" id="p_ngo" readonly>
+                            </div>
+                            <div class="col-12">
+                                <div class="alert alert-danger d-none" id="form-msg" role="alert"></div>
+                                <button type="button" class="btn btn-primary" id="submit-request">Submit Request</button>
+                                <button type="button" class="btn btn-secondary" onclick="openDashboard()">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proposals View -->
+        <section id="proposals" class="d-none">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">Proposals / NGO Decisions</h4>
+                </div>
+                <div class="card-body">
+                    <div id="proposalList"></div>
+                    <button class="btn btn-secondary mt-3" onclick="openDashboard()">Back to Dashboard</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Login / Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Admin ID</label>
+                        <input type="text" class="form-control" id="adminId" placeholder="Enter ID">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="adminPass" placeholder="Enter Password">
+                    </div>
+                    <div class="alert alert-danger d-none" id="loginError" role="alert">Invalid credentials</div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary" id="btn-login">Login</button>
+                        <button class="btn btn-secondary" id="btn-signup">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Hospital Management System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const API_BASE = 'http://localhost:8080/api';
+        const fundBtn = document.getElementById('fundBtn');
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        const btnLogin = document.getElementById('btn-login');
+        const btnSignup = document.getElementById('btn-signup');
+        const btnLogout = document.getElementById('btn-logout');
+        const loginError = document.getElementById('loginError');
+
+        const ngoDashboard = document.getElementById('ngo-dashboard');
+        const ngoGrid = document.getElementById('ngoGrid');
+        const patientForm = document.getElementById('patient-form');
+        const pName = document.getElementById('p_name');
+        const pAge = document.getElementById('p_age');
+        const pCondition = document.getElementById('p_condition');
+        const pAmount = document.getElementById('p_amount');
+        const pNgo = document.getElementById('p_ngo');
+        const submitRequest = document.getElementById('submit-request');
+        const proposalsSection = document.getElementById('proposals');
+        const proposalList = document.getElementById('proposalList');
+        const formMsg = document.getElementById('form-msg');
+
+        let admins = JSON.parse(localStorage.getItem('admins_demo') || '{}');
+        let proposals = [];
+        let ngos = [];
+
+        function hideAllSections() {
+            ngoDashboard.classList.add('d-none');
+            patientForm.classList.add('d-none');
+            proposalsSection.classList.add('d-none');
+        }
+
+        function openDashboard() {
+            hideAllSections();
+            ngoDashboard.classList.remove('d-none');
+            renderNGOs();
+            window.scrollTo({top:0,behavior:'smooth'});
+        }
+
+        function openPatientForm(selectedNgoId = null) {
+            hideAllSections();
+            patientForm.classList.remove('d-none');
+            pName.value = '';
+            pAge.value = '';
+            pCondition.value = '';
+            pAmount.value = '';
+            if(selectedNgoId){
+                const ngo = ngos.find(n=>n.id === selectedNgoId);
+                if(ngo) pNgo.value = ngo.name;
+            }
+            formMsg.classList.add('d-none');
+            window.scrollTo({top:0,behavior:'smooth'});
+        }
+
+        function openProposals() {
+            hideAllSections();
+            proposalsSection.classList.remove('d-none');
+            renderProposals();
+            window.scrollTo({top:0,behavior:'smooth'});
+        }
+
+        async function loadNGOs() {
+            try {
+                const response = await fetch(`${API_BASE}/funding/ngos`);
+                ngos = await response.json();
+                renderNGOs();
+            } catch (error) {
+                console.error('Error loading NGOs:', error);
+                ngos = [
+                    {id:'NG001',name:'Helping Hands',location:'Dhaka',contact:'+880111111111'},
+                    {id:'NG002',name:'Care & Cure',location:'Chittagong',contact:'+880222222222'},
+                    {id:'NG003',name:'Hope Foundation',location:'Khulna',contact:'+880333333333'},
+                    {id:'NG004',name:'Bright Future',location:'Sylhet',contact:'+880444444444'},
+                    {id:'NG005',name:'Sunrise Aid',location:'Barishal',contact:'+880555555555'}
+                ];
+                renderNGOs();
+            }
+        }
+
+        function renderNGOs() {
+            ngoGrid.innerHTML = '';
+            ngos.forEach(ngo => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6';
+                col.innerHTML = `
+                    <div class="card h-100 shadow-sm border-start border-primary border-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">${escapeHtml(ngo.name)}</h5>
+                            <p class="card-text text-muted">${escapeHtml(ngo.location || '')} • ${escapeHtml(ngo.contact || '')}</p>
+                            <button class="btn btn-primary" onclick="openPatientForm('${ngo.id}')">Add Patient</button>
+                        </div>
+                    </div>
+                `;
+                ngoGrid.appendChild(col);
+            });
+        }
+
+        async function loadProposals() {
+            try {
+                const response = await fetch(`${API_BASE}/funding/all`);
+                proposals = await response.json();
+                renderProposals();
+            } catch (error) {
+                console.error('Error loading proposals:', error);
+                proposals = [];
+                renderProposals();
+            }
+        }
+
+        function renderProposals() {
+            proposalList.innerHTML = '';
+            if(!Array.isArray(proposals) || proposals.length === 0){
+                proposalList.innerHTML = '<p class="text-muted text-center py-3">No proposals yet. Add patient requests.</p>';
+                return;
+            }
+            proposals.slice().reverse().forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card mb-3';
+                const statusColor = p.status === 'APPROVED' ? 'success' : p.status === 'REJECTED' ? 'danger' : 'warning';
+                card.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">${escapeHtml(p.patientName)}</h5>
+                        <p class="card-text mb-1"><strong>NGO:</strong> ${escapeHtml(p.ngoName)}</p>
+                        <p class="card-text mb-1"><strong>Amount:</strong> $${Number(p.requestedAmount).toFixed(2)}</p>
+                        <p class="card-text mb-1"><strong>Condition:</strong> ${escapeHtml(p.medicalCondition)}</p>
+                        <span class="badge bg-${statusColor}">Status: ${p.status}</span>
+                    </div>
+                `;
+                proposalList.appendChild(card);
+            });
+        }
+
+        fundBtn.addEventListener('click', () => loginModal.show());
+
+        btnLogin.addEventListener('click', () => {
+            const id = document.getElementById('adminId').value.trim();
+            const pass = document.getElementById('adminPass').value.trim();
+            if(admins[id] && admins[id] === pass){
+                loginError.classList.add('d-none');
+                loginModal.hide();
+                openDashboard();
+                loadNGOs();
+                loadProposals();
+            } else {
+                loginError.textContent = 'Invalid credentials';
+                loginError.classList.remove('d-none');
+            }
+        });
+
+        btnSignup.addEventListener('click', () => {
+            const id = document.getElementById('adminId').value.trim();
+            const pass = document.getElementById('adminPass').value.trim();
+            if(!id || !pass){
+                loginError.textContent = 'Enter ID & Password';
+                loginError.classList.remove('d-none');
+                return;
+            }
+            admins[id] = pass;
+            localStorage.setItem('admins_demo', JSON.stringify(admins));
+            loginError.classList.add('d-none');
+            loginModal.hide();
+            openDashboard();
+            loadNGOs();
+            loadProposals();
+            setTimeout(() => alert('Admin account created & logged in!'), 50);
+        });
+
+        btnLogout.addEventListener('click', () => {
+            if(confirm('Logout?')){
+                ngoDashboard.classList.add('d-none');
+                window.scrollTo({top:0,behavior:'smooth'});
+            }
+        });
+
+        submitRequest.addEventListener('click', async () => {
+            formMsg.classList.add('d-none');
+            const name = pName.value.trim();
+            const age = pAge.value.trim();
+            const cond = pCondition.value.trim();
+            const amt = pAmount.value.trim();
+            const ngoName = pNgo.value;
+            if(!name || !age || !cond || !amt){
+                formMsg.textContent = 'Please fill all fields';
+                formMsg.classList.remove('d-none');
+                return;
+            }
+            
+            const ngo = ngos.find(n=>n.name===ngoName);
+            if (!ngo) {
+                formMsg.textContent = 'Invalid NGO selected';
+                formMsg.classList.remove('d-none');
+                return;
+            }
+
+            const requestData = {
+                patientName: name,
+                patientId: null,
+                medicalCondition: cond,
+                estimatedCost: parseFloat(amt),
+                requestedAmount: parseFloat(amt),
+                ngoId: ngo.id,
+                ngoName: ngoName
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/funding/request`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestData)
+                });
+
+                if (response.ok) {
+                    openProposals();
+                    loadProposals();
+                    setTimeout(() => alert('Patient request created for selected NGO!'), 50);
+                } else {
+                    formMsg.textContent = 'Error submitting request';
+                    formMsg.classList.remove('d-none');
+                }
+            } catch (error) {
+                console.error('Error submitting request:', error);
+                formMsg.textContent = 'Error submitting request';
+                formMsg.classList.remove('d-none');
+            }
+        });
+
+        function escapeHtml(text){
+            if(typeof text !== 'string') return text;
+            return text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+        }
+
+        (function init(){
+            hideAllSections();
+            loadNGOs();
+        })();
+    </script>
+</body>
+</html>

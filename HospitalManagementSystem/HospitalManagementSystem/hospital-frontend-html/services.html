@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - 24/7 HealthCare+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      color: #222;
+      background: #f0f7ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .hero-wrap {
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1588776814546-c8e5fdfef2b0?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      filter: blur(6px) brightness(0.6);
+      z-index: -2;
+    }
+    .hero-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
+      z-index: -1;
+    }
+    header {
+      padding: 36px 20px 10px;
+      text-align: center;
+      color: #fff;
+    }
+    .logo {
+      font-size: 48px;
+      font-weight: 800;
+      color: #bffefe;
+      text-shadow: 0 6px 18px rgba(0,150,170,0.18);
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .slogan {
+      font-size: 18px;
+      color: #e8fbfb;
+      margin-bottom: 26px;
+    }
+    .home-button {
+      padding: 14px 36px;
+      border-radius: 28px;
+      border: none;
+      background: linear-gradient(90deg,#00d8d8,#00a3ff);
+      color: #00303a;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,160,200,0.18);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .home-button:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,160,200,0.24); }
+    .container {
+      width: 96%;
+      max-width: 1100px;
+      margin: 26px auto;
+    }
+    section.app-section {
+      display: none;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 8px 30px rgba(10,30,60,0.06);
+    }
+    section.app-section.active {
+      display: block;
+      animation: fadeIn 0.45s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    h2.section-title {
+      color: #0077cc;
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .option-card {
+      background: linear-gradient(180deg,#0077cc,#005fa3);
+      color: #fff;
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,90,140,0.12);
+      transition: transform .25s ease, box-shadow .25s ease;
+      user-select: none;
+    }
+    .option-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,90,140,0.18); }
+    .back-wrap { margin-top: 18px; display:flex; justify-content:center; }
+    .btn-back {
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: #e9f7ff;
+      color: #005f8a;
+      border: 1px solid rgba(0,95,138,0.08);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-back:hover { transform: translateY(-3px); }
+    table.info {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    table.info th, table.info td {
+      padding: 10px 12px;
+      border: 1px solid #e6eef8;
+      text-align: left;
+      vertical-align: middle;
+    }
+    table.info th {
+      background: #0077cc;
+      color: #fff;
+      font-weight: 700;
+    }
+    table.info tbody tr:hover { background: #f2fbff; }
+    .small-note { color: #4b5563; font-size: 13px; margin-top: 8px; }
+    footer.page-foot {
+      text-align: center;
+      padding: 18px 8px;
+      color: #5b6b7a;
+      font-size: 13px;
+      margin-top: 26px;
+    }
+    @media (max-width: 640px) {
+      header h1 { font-size: 28px; }
+      .logo { font-size: 34px; }
+      .hero-content { padding: 40px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-wrap">
+    <header>
+      <div class="logo">24/7 HealthCare+</div>
+      <p class="slogan">Your Health, Our Priority</p>
+      <div class="hero-content">
+        <button class="home-button" onclick="openSection('services')">Services</button>
+            </div>
+    </header>
+    </div>
+
+        <div class="container">
+    <section id="services" class="app-section active">
+      <h2 class="section-title">Choose a Service Category</h2>
+      <div class="option-grid">
+        <div class="option-card" onclick="openSection('hospital')">Hospital Services</div>
+        <div class="option-card" onclick="openSection('diagnostic')">Diagnostic Services</div>
+            </div>
+      <div class="back-wrap"><button class="btn-back" onclick="window.location.href='index.html'">Back to Home</button></div>
+    </section>
+
+    <section id="hospital" class="app-section">
+      <h2 class="section-title">Hospital Services</h2>
+      <div class="option-grid" style="grid-template-columns: repeat(auto-fit,minmax(160px,1fr));">
+        <div class="option-card" onclick="openSection('appointment')">Doctor Information</div>
+        <div class="option-card" onclick="openSection('pharmacy')">Pharmacy</div>
+        <div class="option-card" onclick="openSection('emergency')">Emergency</div>
+        <div class="option-card" onclick="openSection('transfer')">Transfer Patient List</div>
+        <div class="option-card" onclick="openSection('billing')">Billing</div>
+        <div class="option-card" onclick="openSection('operation')">Operation & Surgery</div>
+        <div class="option-card" onclick="openSection('admitted')">Admitted Patient Info</div>
+        <div class="option-card" onclick="openSection('staffs')">Info of Staffs</div>
+        </div>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('services')">Back</button></div>
+    </section>
+
+    <section id="appointment" class="app-section">
+      <h2 class="section-title">Our Departments & Doctors</h2>
+      <div style="margin-bottom:18px;">
+        <strong>Cardiology</strong>
+        <table class="info">
+          <thead><tr><th>No.</th><th>Name</th><th>Specialty</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Dr. James Carter</td><td>MD, Heart Specialist</td></tr>
+            <tr><td>2</td><td>Dr. Emily Stone</td><td>MBBS, MD, Cardiac Surgeon</td></tr>
+            <tr><td>3</td><td>Dr. David Miller</td><td>DM Cardiology, Interventional Cardiologist</td></tr>
+            <tr><td>4</td><td>Dr. Olivia Turner</td><td>MD, Cardiac Rehab Expert</td></tr>
+          </tbody>
+        </table>
+                            </div>
+      <div style="margin-bottom:18px;">
+        <strong>Neurology</strong>
+        <table class="info">
+          <thead><tr><th>No.</th><th>Name</th><th>Specialty</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Dr. William Smith</td><td>MBBS, MD, Neurosurgeon</td></tr>
+            <tr><td>2</td><td>Dr. Ava Johnson</td><td>DM Neurology, Neurophysiologist</td></tr>
+            <tr><td>3</td><td>Dr. Benjamin Harris</td><td>MD, Stroke Specialist</td></tr>
+            <tr><td>4</td><td>Dr. Mia Thompson</td><td>DM Neurology, Neuro Rehab Expert</td></tr>
+          </tbody>
+        </table>
+                        </div>
+      <div style="margin-bottom:18px;">
+        <strong>Orthopedics</strong>
+        <table class="info">
+          <thead><tr><th>No.</th><th>Name</th><th>Specialty</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Dr. Henry Davis</td><td>MS Orthopedics, Bone & Joint Specialist</td></tr>
+            <tr><td>2</td><td>Dr. Charlotte Lewis</td><td>MS Sports Medicine, Sports Injury Specialist</td></tr>
+            <tr><td>3</td><td>Dr. Samuel Harris</td><td>MS Orthopedics, Spinal Surgeon</td></tr>
+            <tr><td>4</td><td>Dr. Grace Moore</td><td>DNB Orthopedics, Pediatric Orthopedic</td></tr>
+          </tbody>
+        </table>
+                    </div>
+      <div style="margin-bottom:18px;">
+        <strong>Dermatology</strong>
+        <table class="info">
+          <thead><tr><th>No.</th><th>Name</th><th>Specialty</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Dr. Amelia Scott</td><td>MD Dermatology, Skin Specialist</td></tr>
+            <tr><td>2</td><td>Dr. Lucas Young</td><td>MD Cosmetic Dermatology</td></tr>
+            <tr><td>3</td><td>Dr. Harper Adams</td><td>DDVL, Laser Treatment Expert</td></tr>
+            <tr><td>4</td><td>Dr. Ella Baker</td><td>MD Pediatric Dermatology</td></tr>
+          </tbody>
+        </table>
+                </div>
+      <div style="margin-bottom:6px;">
+        <strong>Counselling Centre</strong>
+        <table class="info">
+          <thead><tr><th>No.</th><th>Name</th><th>Specialty</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Dr. Sarah Mitchell</td><td>PhD, Clinical Psychologist</td></tr>
+            <tr><td>2</td><td>Dr. Daniel Perez</td><td>MA, Licensed Counsellor</td></tr>
+            <tr><td>3</td><td>Dr. Emily Foster</td><td>MS, Mental Health Specialist</td></tr>
+            <tr><td>4</td><td>Dr. Laura Simmons</td><td>PsyD, Child & Adolescent Counsellor</td></tr>
+          </tbody>
+        </table>
+                            </div>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="pharmacy" class="app-section">
+      <h2 class="section-title">Pharmacy</h2>
+      <table class="info">
+        <thead><tr><th>No.</th><th>Medicine Name</th><th>Type</th><th>Price (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Paracetamol</td><td>Tablet</td><td>1.5</td></tr>
+          <tr><td>2</td><td>Amoxicillin</td><td>Capsule</td><td>3.2</td></tr>
+          <tr><td>3</td><td>Vitamin D</td><td>Tablet</td><td>2.0</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="emergency" class="app-section">
+      <h2 class="section-title">Emergency Contacts</h2>
+      <table class="info">
+        <thead><tr><th>Service</th><th>Contact Number</th></tr></thead>
+        <tbody>
+          <tr><td>Ambulance</td><td>+1-202-555-0145</td></tr>
+          <tr><td>Fire</td><td>+1-202-555-0172</td></tr>
+          <tr><td>Police</td><td>+1-202-555-0198</td></tr>
+          <tr><td>Medical Helpline</td><td>+1-202-555-0111</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="transfer" class="app-section">
+      <h2 class="section-title">Transfer Patient List</h2>
+      <table class="info">
+        <thead><tr><th>Patient ID</th><th>Name</th><th>From Dept</th><th>To Dept</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>John Miller</td><td>Cardiology</td><td>Neurology</td><td>Neurological Checkup</td></tr>
+          <tr><td>102</td><td>Emma Wilson</td><td>Orthopedics</td><td>Physiotherapy</td><td>Rehabilitation</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="billing" class="app-section">
+      <h2 class="section-title">Billing</h2>
+      <table class="info">
+        <thead><tr><th>Bill ID</th><th>Patient Name</th><th>Service</th><th>Amount (USD)</th><th>Date</th></tr></thead>
+        <tbody>
+          <tr><td>B101</td><td>John Miller</td><td>Cardiology</td><td>5000</td><td>12/11/2025</td></tr>
+          <tr><td>B102</td><td>Emma Wilson</td><td>Orthopedics</td><td>3200</td><td>13/11/2025</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="operation" class="app-section">
+      <h2 class="section-title">Operation & Surgery</h2>
+      <table class="info">
+        <thead><tr><th>Operation ID</th><th>Patient Name</th><th>Type</th><th>Date</th><th>Surgeon</th></tr></thead>
+        <tbody>
+          <tr><td>OP101</td><td>John Miller</td><td>Heart Surgery</td><td>12/11/2025</td><td>Dr. James Carter</td></tr>
+          <tr><td>OP102</td><td>Emma Wilson</td><td>Spinal Surgery</td><td>15/11/2025</td><td>Dr. Samuel Harris</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="admitted" class="app-section">
+      <h2 class="section-title">Admitted Patient Info</h2>
+      <table class="info">
+        <thead><tr><th>Patient ID</th><th>Name</th><th>Department</th><th>Room No.</th></tr></thead>
+        <tbody>
+          <tr><td>201</td><td>John Miller</td><td>Cardiology</td><td>101</td></tr>
+          <tr><td>202</td><td>Emma Wilson</td><td>Orthopedics</td><td>102</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="staffs" class="app-section">
+      <h2 class="section-title">Hospital Staffs</h2>
+      <table class="info">
+        <thead><tr><th>ID</th><th>Name</th><th>Position</th></tr></thead>
+        <tbody>
+          <tr><td>S101</td><td>Michael Brown</td><td>Nurse</td></tr>
+          <tr><td>S102</td><td>Jessica Taylor</td><td>Receptionist</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('hospital')">Back</button></div>
+    </section>
+
+    <section id="diagnostic" class="app-section">
+      <h2 class="section-title">Diagnostic Services</h2>
+      <div class="option-grid">
+        <div class="option-card" onclick="openSection('diag-blood')">Blood Test</div>
+        <div class="option-card" onclick="openSection('diag-urine')">Urine Test</div>
+        <div class="option-card" onclick="openSection('diag-xray')">X-Ray</div>
+        <div class="option-card" onclick="openSection('diag-ecg')">ECG / ECHO</div>
+        <div class="option-card" onclick="openSection('diag-ultrasound')">Ultrasound</div>
+        <div class="option-card" onclick="openSection('diag-packages')">Health Packages</div>
+                        </div>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('services')">Back</button></div>
+    </section>
+
+    <section id="diag-blood" class="app-section">
+      <h2 class="section-title">Blood Test</h2>
+      <p class="small-note">Common blood tests we provide (fasting / sample requirements vary by test).</p>
+      <table class="info">
+        <thead><tr><th>Test</th><th>Includes</th><th>Approx. Cost (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>Complete Blood Count (CBC)</td><td>RBC, WBC, Hemoglobin, Platelets</td><td>10 - 20</td></tr>
+          <tr><td>Blood Sugar (Fasting & Random)</td><td>Glucose level check</td><td>8 - 15</td></tr>
+          <tr><td>Lipid Profile</td><td>Cholesterol, HDL, LDL, Triglycerides</td><td>25 - 45</td></tr>
+          <tr><td>Liver Function Test (LFT)</td><td>ALT, AST, Bilirubin</td><td>20 - 35</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('diagnostic')">Back</button></div>
+    </section>
+
+    <section id="diag-urine" class="app-section">
+      <h2 class="section-title">Urine Test</h2>
+      <p class="small-note">Urinalysis & urine culture services.</p>
+      <table class="info">
+        <thead><tr><th>Test</th><th>What it checks</th><th>Approx. Cost (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>Urinalysis</td><td>Protein, Glucose, pH, Ketones, Microscopy</td><td>6 - 12</td></tr>
+          <tr><td>Urine Culture</td><td>Detects urinary infections & sensitivity</td><td>20 - 35</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('diagnostic')">Back</button></div>
+    </section>
+
+    <section id="diag-xray" class="app-section">
+      <h2 class="section-title">X-Ray</h2>
+      <p class="small-note">Digital X-Ray imaging (chest, limbs, spine, etc.).</p>
+      <table class="info">
+        <thead><tr><th>Type</th><th>Usage</th><th>Approx. Cost (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>Chest X-Ray</td><td>Respiratory & cardiac screening</td><td>20 - 35</td></tr>
+          <tr><td>Extremity X-Ray</td><td>Bone fractures, alignment</td><td>15 - 30</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('diagnostic')">Back</button></div>
+    </section>
+
+    <section id="diag-ecg" class="app-section">
+      <h2 class="section-title">ECG / ECHO</h2>
+      <p class="small-note">Cardiac electrical & echo imaging services.</p>
+      <table class="info">
+        <thead><tr><th>Test</th><th>Purpose</th><th>Approx. Cost (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>ECG</td><td>Detects heart rhythm & electrical issues</td><td>10 - 20</td></tr>
+          <tr><td>Echocardiography (ECHO)</td><td>Heart structure & function</td><td>50 - 90</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('diagnostic')">Back</button></div>
+    </section>
+
+    <section id="diag-ultrasound" class="app-section">
+      <h2 class="section-title">Ultrasound</h2>
+      <p class="small-note">Abdominal, pelvic, obstetric, and targeted ultrasounds.</p>
+      <table class="info">
+        <thead><tr><th>Type</th><th>Usage</th><th>Approx. Cost (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>Abdominal Ultrasound</td><td>Liver, kidneys, gallbladder, pancreas</td><td>40 - 70</td></tr>
+          <tr><td>Obstetric Ultrasound</td><td>Pregnancy monitoring</td><td>35 - 65</td></tr>
+        </tbody>
+      </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('diagnostic')">Back</button></div>
+    </section>
+
+    <section id="diag-packages" class="app-section">
+      <h2 class="section-title">Health Packages</h2>
+      <p class="small-note">Click a package to view included tests and approximate cost ranges.</p>
+      <table class="info">
+        <thead>
+          <tr><th>No.</th><th>Package Name</th><th>Includes</th><th>Approx. Cost (USD)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+            <td>1</td>
+            <td>Basic Health Check-up</td>
+            <td>CBC, Blood Sugar, Urine Test, Blood Pressure, BMI</td>
+            <td>50 - 70</td>
+                            </tr>
+                            <tr>
+            <td>2</td>
+            <td>Standard Health Check-up</td>
+            <td>CBC, Lipid Profile, LFT, KFT, ECG</td>
+            <td>100 - 150</td>
+                            </tr>
+                            <tr>
+            <td>3</td>
+            <td>Comprehensive Health Check-up</td>
+            <td>CBC, LFT, KFT, ECG, X-Ray, Ultrasound, Thyroid</td>
+            <td>200 - 250</td>
+                            </tr>
+                            <tr>
+            <td>4</td>
+            <td>Senior Citizen Package</td>
+            <td>Diabetes panel, ECG, Vision screening, Bone density (if available)</td>
+            <td>130 - 180</td>
+                            </tr>
+                        </tbody>
+                    </table>
+      <div class="back-wrap"><button class="btn-back" onclick="openSection('diagnostic')">Back</button></div>
+    </section>
+        </div>
+
+  <footer class="page-foot">
+    &copy; 2025 24/7 HealthCare+. All Rights Reserved.
+    </footer>
+
+  <script>
+    function hideAll() {
+      document.querySelectorAll('.app-section').forEach(s => s.classList.remove('active'));
+    }
+    function openSection(id) {
+      hideAll();
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      // Services section is active by default
+    });
+  </script>
+</body>
+</html>

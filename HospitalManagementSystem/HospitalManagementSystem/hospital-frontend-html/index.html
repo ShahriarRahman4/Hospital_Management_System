@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Connection Status Notification -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="connectionToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-wifi me-2" id="connectionIcon"></i>
+                <strong class="me-auto" id="connectionTitle">Checking Connection...</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="connectionMessage">
+                Connecting to backend server...
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-heart-pulse-fill text-primary me-2 fs-4"></i>
+                <span class="fw-bold">HMS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctors.html">Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="departments.html">Departments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="emergency.html">Emergency & Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-2" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Your Health, Our Priority</h1>
+                    <p class="lead mb-4">Comprehensive healthcare services with compassion and excellence</p>
+                    <div class="d-flex gap-3">
+                        <a href="appointments.html" class="btn btn-light btn-lg">Book Appointment</a>
+                        <a href="emergency.html" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-telephone-fill me-2"></i>Emergency
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Our Services</h2>
+                <p class="lead text-muted">We provide comprehensive healthcare services to meet all your medical needs</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-calendar-check fs-3 text-primary"></i>
+                            </div>
+                            <h5 class="card-title">Appointment</h5>
+                            <p class="card-text text-muted">Schedule appointments with our expert doctors</p>
+                            <a href="appointments.html" class="btn btn-outline-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-person-badge fs-3 text-success"></i>
+                            </div>
+                            <h5 class="card-title">Patient Portal</h5>
+                            <p class="card-text text-muted">Access your medical records and reports</p>
+                            <a href="patient-portal-login.html" class="btn btn-outline-success">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-telephone fs-3 text-info"></i>
+                            </div>
+                            <h5 class="card-title">Tele / Online Consultant</h5>
+                            <p class="card-text text-muted">Online consultations with our doctors</p>
+                            <a href="tele-consultation.html" class="btn btn-outline-info">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-file-earmark-medical fs-3 text-warning"></i>
+                            </div>
+                            <h5 class="card-title">Online Report</h5>
+                            <p class="card-text text-muted">View and download your medical reports</p>
+                            <a href="online-report.html" class="btn btn-outline-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-danger bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-exclamation-triangle fs-3 text-danger"></i>
+                            </div>
+                            <h5 class="card-title">Emergency Services</h5>
+                            <p class="card-text text-muted">24/7 emergency care and ambulance services</p>
+                            <a href="emergency.html" class="btn btn-outline-danger">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-secondary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-cash-coin fs-3 text-secondary"></i>
+                            </div>
+                            <h5 class="card-title">Funding</h5>
+                            <p class="card-text text-muted">Financial assistance for medical treatments</p>
+                            <a href="funding.html" class="btn btn-outline-secondary">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-virus fs-3 text-warning"></i>
+                            </div>
+                            <h5 class="card-title">Pandemic Info</h5>
+                            <p class="card-text text-muted">Pandemic emergency services and information</p>
+                            <a href="pandemic.html" class="btn btn-outline-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Why Choose Us</h2>
+                <p class="lead text-muted">We are committed to providing the highest quality healthcare services</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="feature-icon bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-clock-history fs-2 text-primary"></i>
+                        </div>
+                        <h5>24/7 Emergency Care</h5>
+                        <p class="text-muted">Round-the-clock emergency services with dedicated emergency response team</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="feature-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-person-check fs-2 text-success"></i>
+                        </div>
+                        <h5>Expert Medical Team</h5>
+                        <p class="text-muted">Highly qualified and experienced doctors across all specialties</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="feature-icon bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-heart-pulse fs-2 text-info"></i>
+                        </div>
+                        <h5>Advanced Technology</h5>
+                        <p class="text-muted">State-of-the-art medical equipment and diagnostic facilities</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="feature-icon bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-geo-alt fs-2 text-warning"></i>
+                        </div>
+                        <h5>Multiple Locations</h5>
+                        <p class="text-muted">Conveniently located hospitals across the region</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Hospital Management System</h5>
+                    <p class="text-muted">Your trusted healthcare partner</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">&copy; 2025 Hospital Management System. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandemic Info - Hospital Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-heart-pulse-fill text-primary me-2 fs-4"></i>
+                <span class="fw-bold">HMS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="departments.html">Departments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="emergency.html">Emergency</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold">Pandemic Emergency Services</h1>
+            <p class="lead text-muted">Current hospital capacity and resources during pandemic</p>
+        </div>
+
+        <!-- Hospital Capacity Overview -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="bi bi-hospital me-2"></i>Hospital Capacity Overview</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-primary text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-people fs-1 mb-2"></i>
+                                <h3 id="totalDoctors" class="mb-2">-</h3>
+                                <p class="mb-0">Total Doctors</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-success text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-door-open fs-1 mb-2"></i>
+                                <h3 id="availableRooms" class="mb-2">-</h3>
+                                <p class="mb-0">Available Rooms</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-info text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-capsule fs-1 mb-2"></i>
+                                <h3 id="medicineStock" class="mb-2">-</h3>
+                                <p class="mb-0">Medicine Stock (%)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-secondary text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-gear fs-1 mb-2"></i>
+                                <h3 id="equipment" class="mb-2">-</h3>
+                                <p class="mb-0">Equipment Status</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pandemic Services -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0"><i class="bi bi-virus me-2"></i>Pandemic Services</h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-4">During pandemic situations, we provide comprehensive emergency services including patient transfers, capacity monitoring, and resource management.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <button class="btn btn-primary" onclick="window.location.href='hospital-transfer.html'">
+                        <i class="bi bi-search me-2"></i>Search New Hospital
+                    </button>
+                    <button class="btn btn-success" onclick="window.location.href='hospital-transfer.html'">
+                        <i class="bi bi-arrow-left-right me-2"></i>Transfer Patients
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Hospital Management System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const API_BASE = 'http://localhost:8080/api';
+
+        async function loadPandemicInfo() {
+            try {
+                const response = await fetch(`${API_BASE}/pandemic`);
+                const info = await response.json();
+                
+                document.getElementById('totalDoctors').textContent = info.totalDoctors || 0;
+                document.getElementById('availableRooms').textContent = info.availableRooms || 0;
+                document.getElementById('medicineStock').textContent = (info.medicineStock || 0) + '%';
+                document.getElementById('equipment').textContent = info.equipmentAvailability || 'N/A';
+            } catch (error) {
+                console.error('Error loading pandemic info:', error);
+            }
+        }
+
+        window.onload = loadPandemicInfo;
+    </script>
+</body>
+</html>
