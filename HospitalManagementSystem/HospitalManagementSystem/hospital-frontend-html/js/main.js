@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check if user is logged in
     checkAuthStatus();
+
+    // Initialize speciality section interactions
+    initSpecialities();
 });
 
 // Update active navigation link
@@ -224,5 +227,37 @@ async function checkBackendConnection() {
         delay: 5000 // Show for 5 seconds
     });
     toast.show();
+}
+
+// Specialities interactions
+function initSpecialities() {
+    const specialityCards = document.querySelectorAll('.speciality-card');
+    if (specialityCards.length) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        specialityCards.forEach(card => observer.observe(card));
+    }
+
+    const specialityModal = document.getElementById('specialityModal');
+    const modalTitle = document.getElementById('specialityModalLabel');
+    const modalBody = document.getElementById('specialityModalBody');
+
+    if (specialityModal && modalTitle && modalBody) {
+        specialityModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget;
+            if (!button) return;
+            const card = button.closest('.speciality-card');
+            if (!card) return;
+
+            modalTitle.textContent = card.dataset.title || 'Speciality';
+            modalBody.innerHTML = card.dataset.description || '';
+        });
+    }
 }
 

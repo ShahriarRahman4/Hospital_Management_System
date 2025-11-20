@@ -52,6 +52,9 @@
                         <a class="nav-link" href="departments.html">Departments</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#specialities">Specialities</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="emergency.html">Emergency & Contact</a>
                     </li>
                 </ul>
@@ -60,7 +63,7 @@
                         <a class="nav-link" href="login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white ms-2" href="register.html">Register</a>
+                        <a class="nav-link ms-2" href="register.html">Register</a>
                     </li>
                 </ul>
             </div>
@@ -73,7 +76,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 class="display-4 fw-bold mb-4">Your Health, Our Priority</h1>
-                    <p class="lead mb-4">Comprehensive healthcare services with compassion and excellence</p>
+                    <p class="lead mb-4">Connecting hospitals, technology, and compassion for your better health</p>
                     <div class="d-flex gap-3">
                         <a href="appointments.html" class="btn btn-light btn-lg">Book Appointment</a>
                         <a href="emergency.html" class="btn btn-outline-light btn-lg">
@@ -94,6 +97,19 @@
             </div>
             
             <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-hospital fs-3 text-primary"></i>
+                            </div>
+                            <h5 class="card-title">Hospital & Diagnostic Services</h5>
+                            <p class="card-text text-muted">Complete hospital and diagnostic services</p>
+                            <a href="services.html" class="btn btn-outline-primary">View Services</a>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-body text-center p-4">
@@ -188,6 +204,133 @@
         </div>
     </section>
 
+    <!-- Specialities Section -->
+    <section id="specialities" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Our Specialities</h2>
+                <p class="lead text-muted">Innovative programs and technology-enabled care designed for every patient journey</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 speciality-card fade-up" data-title="Multi-Hospital Network" data-description='<p class="text-muted">Seamless coordination between partner hospitals keeps patients moving without delays.</p><ul class="mb-0 ps-3 text-muted"><li>Centralized visibility for super-admins</li><li>Fast-track referrals and transfers</li><li>Guaranteed bed availability updates</li></ul>'>
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <div class="speciality-icon bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3">
+                                <i class="bi bi-hospital text-primary"></i>
+                            </div>
+                            <h5 class="fw-semibold">Multi-Hospital Network</h5>
+                            <p class="text-muted mb-3">Connected campuses with smart transfer oversight.</p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>• Connected hospitals</li>
+                                <li>• Super-admin control</li>
+                                <li>• Rapid transfers</li>
+                            </ul>
+                            <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#specialityModal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 speciality-card fade-up" data-title="Funding & NGO Support" data-description='<p class="text-muted">Dedicated workflows keep every financial assistance request visible and accountable.</p><ul class="mb-0 ps-3 text-muted"><li>Integrated NGO collaboration</li><li>Eligibility and approval tracking</li><li>Automated status notifications</li></ul>'>
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <div class="speciality-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3">
+                                <i class="bi bi-cash-stack text-success"></i>
+                            </div>
+                            <h5 class="fw-semibold">Funding & NGO Support</h5>
+                            <p class="text-muted mb-3">Financial bridges for patients who need instant help.</p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>• NGO partnerships</li>
+                                <li>• Approval workflows</li>
+                                <li>• Transparent status</li>
+                            </ul>
+                            <button class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#specialityModal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 speciality-card fade-up" data-title="Telemedicine Suite" data-description='<p class="text-muted">Virtual-first care keeps clinicians by a patient’s side from anywhere.</p><ul class="mb-0 ps-3 text-muted"><li>Instant video consults</li><li>Digital prescription management</li><li>Secure follow-up channels</li></ul>'>
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <div class="speciality-icon bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3">
+                                <i class="bi bi-laptop text-info"></i>
+                            </div>
+                            <h5 class="fw-semibold">Telemedicine</h5>
+                            <p class="text-muted mb-3">24/7 online clinicians with structured follow-up.</p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>• Instant consultation</li>
+                                <li>• Video follow-up</li>
+                                <li>• Online Rx</li>
+                            </ul>
+                            <button class="btn btn-outline-info mt-3" data-bs-toggle="modal" data-bs-target="#specialityModal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 speciality-card fade-up" data-title="Emergency Handling" data-description='<p class="text-muted">Coordinated command center links ambulances, ER teams, and specialists.</p><ul class="mb-0 ps-3 text-muted"><li>Real-time triage dashboard</li><li>Integrated ambulance tracking</li><li>Critical handoff playbooks</li></ul>'>
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <div class="speciality-icon bg-danger bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3">
+                                <i class="bi bi-truck-flatbed text-danger"></i>
+                            </div>
+                            <h5 class="fw-semibold">Emergency Handling</h5>
+                            <p class="text-muted mb-3">Rapid-response teams supported by live data.</p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>• 24/7 response</li>
+                                <li>• Smart triage</li>
+                                <li>• Ambulance sync</li>
+                            </ul>
+                            <button class="btn btn-outline-danger mt-3" data-bs-toggle="modal" data-bs-target="#specialityModal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 speciality-card fade-up" data-title="Health Analytics" data-description='<p class="text-muted">Predictive analytics deliver actionable insights for clinicians and administrators.</p><ul class="mb-0 ps-3 text-muted"><li>AI-powered risk flags</li><li>Population health dashboards</li><li>Outcome tracking</li></ul>'>
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <div class="speciality-icon bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3">
+                                <i class="bi bi-activity text-warning"></i>
+                            </div>
+                            <h5 class="fw-semibold">Health Analytics</h5>
+                            <p class="text-muted mb-3">Data-first decisions with AI-powered insights.</p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>• AI detection</li>
+                                <li>• Risk monitoring</li>
+                                <li>• Smart dashboards</li>
+                            </ul>
+                            <button class="btn btn-outline-warning mt-3 text-warning" data-bs-toggle="modal" data-bs-target="#specialityModal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 speciality-card fade-up" data-title="Remote Monitoring" data-description='<p class="text-muted">Wearables, home devices, and alerting tools keep clinicians informed daily.</p><ul class="mb-0 ps-3 text-muted"><li>Device-agnostic data ingestion</li><li>Real-time alert escalation</li><li>Care-plan adherence tracking</li></ul>'>
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <div class="speciality-icon bg-secondary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3">
+                                <i class="bi bi-broadcast-pin text-secondary"></i>
+                            </div>
+                            <h5 class="fw-semibold">Remote Monitoring</h5>
+                            <p class="text-muted mb-3">Continuous vitals and wellness insights from home.</p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>• Wearable tracking</li>
+                                <li>• Home monitoring</li>
+                                <li>• Real-time alerts</li>
+                            </ul>
+                            <button class="btn btn-outline-secondary mt-3" data-bs-toggle="modal" data-bs-target="#specialityModal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialities Modal -->
+    <div class="modal fade" id="specialityModal" tabindex="-1" aria-labelledby="specialityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="specialityModalLabel">Speciality Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="specialityModalBody"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Features Section -->
     <section class="py-5 bg-light">
         <div class="container">
@@ -241,15 +384,58 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer class="site-footer pt-5 pb-4 mt-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Hospital Management System</h5>
-                    <p class="text-muted">Your trusted healthcare partner</p>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Care Network</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About HMS</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Hospital Locations</a></li>
+                        <li><a href="#">Telemedicine</a></li>
+                    </ul>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="text-muted mb-0">&copy; 2025 Hospital Management System. All rights reserved.</p>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Clinical Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Emergency & Trauma</a></li>
+                        <li><a href="#">Appointments</a></li>
+                        <li><a href="#">Funding & NGO Support</a></li>
+                        <li><a href="#">Online Lab Reports</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Patient Tools</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Patient Portal</a></li>
+                        <li><a href="#">Find a Doctor</a></li>
+                        <li><a href="#">Ambulance Booking</a></li>
+                        <li><a href="#">Pandemic Info</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Partner Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Corporate Health</a></li>
+                        <li><a href="#">International Transfers</a></li>
+                        <li><a href="#">Supplier Relations</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-12 col-lg-8 mx-auto text-center">
+                    <p class="mb-1 fw-semibold text-white">Permanent Campus</p>
+                    <p class="mb-2 text-white-50">688 Beribadh Road, Mohammadpur, Dhaka-1207, Bangladesh</p>
+                    <p class="mb-1 fw-semibold text-white">Admissions Office</p>
+                    <p class="mb-0 text-white-50">House 56, Road 4/A @ Satmasjid Road, Dhanmondi, Dhaka-1209</p>
+                </div>
+            </div>
+            <div class="row g-4 mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-2 small text-white">&copy; 2025 Hospital Management System. All rights reserved.</p>
+                    <p class="mb-0 small text-white">Privacy • Terms • Accessibility</p>
                 </div>
             </div>
         </div>

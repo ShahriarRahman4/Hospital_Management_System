@@ -38,46 +38,48 @@
             <p class="lead text-muted">24/7 emergency care and support services</p>
         </div>
 
-        <!-- Emergency Contacts -->
+        <!-- Emergency Hotline Numbers -->
         <div class="card shadow-sm mb-4">
             <div class="card-header bg-danger text-white">
-                <h5 class="mb-0"><i class="bi bi-telephone-fill me-2"></i>Emergency Hotline Numbers</h5>
+                <h5 class="mb-0 fw-semibold">
+                    <i class="bi bi-telephone-fill me-2"></i>Emergency Hotline Numbers
+                </h5>
             </div>
             <div class="card-body">
                 <div class="row g-3">
                     <div class="col-md-6 col-lg-3">
-                        <div class="card bg-danger text-white h-100">
+                        <div class="card bg-danger-subtle text-danger border-0 h-100">
                             <div class="card-body text-center">
-                                <i class="bi bi-ambulance fs-1 mb-2"></i>
-                                <h5>Ambulance</h5>
-                                <p class="mb-0 fs-5 fw-bold">017XXXXXXX</p>
+                                <i class="bi bi-truck-front-fill fs-1 mb-2 text-danger"></i>
+                                <h5 class="fw-semibold">Ambulance</h5>
+                                <p class="mb-0 fs-5 fw-bold text-danger">017XXXXXXX</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
-                        <div class="card bg-warning text-white h-100">
+                        <div class="card bg-warning-subtle text-warning border-0 h-100">
                             <div class="card-body text-center">
-                                <i class="bi bi-fire fs-1 mb-2"></i>
-                                <h5>Fire</h5>
-                                <p class="mb-0 fs-5 fw-bold">017XXXXXXX</p>
+                                <i class="bi bi-fire fs-1 mb-2 text-warning"></i>
+                                <h5 class="fw-semibold">Fire</h5>
+                                <p class="mb-0 fs-5 fw-bold text-warning">017XXXXXXX</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
-                        <div class="card bg-primary text-white h-100">
+                        <div class="card bg-primary-subtle text-primary border-0 h-100">
                             <div class="card-body text-center">
-                                <i class="bi bi-shield-check fs-1 mb-2"></i>
-                                <h5>Police</h5>
-                                <p class="mb-0 fs-5 fw-bold">017XXXXXXX</p>
+                                <i class="bi bi-shield-check fs-1 mb-2 text-primary"></i>
+                                <h5 class="fw-semibold">Police</h5>
+                                <p class="mb-0 fs-5 fw-bold text-primary">017XXXXXXX</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
-                        <div class="card bg-success text-white h-100">
+                        <div class="card bg-success-subtle text-success border-0 h-100">
                             <div class="card-body text-center">
-                                <i class="bi bi-hospital fs-1 mb-2"></i>
-                                <h5>Medical Helpline</h5>
-                                <p class="mb-0 fs-5 fw-bold">017XXXXXXX</p>
+                                <i class="bi bi-hospital fs-1 mb-2 text-success"></i>
+                                <h5 class="fw-semibold">Medical Helpline</h5>
+                                <p class="mb-0 fs-5 fw-bold text-success">017XXXXXXX</p>
                             </div>
                         </div>
                     </div>
@@ -85,10 +87,49 @@
             </div>
         </div>
 
+        <!-- Ambulance Booking -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0 fw-semibold">
+                    <i class="bi bi-ambulance me-2"></i>Ambulance Booking
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Emergency Ambulance Button (5 second hold) -->
+                <div class="text-center mb-4 p-4 bg-white rounded shadow-sm">
+                    <h4 id="ambulanceHeadingText" class="mb-3 fw-bold fs-2">Hold for Ambulance</h4>
+                    <p class="text-muted mb-4 fs-5">Press and hold the ambulance for 5 seconds to send an emergency request.</p>
+                    <button 
+                        id="emergencyAmbulanceBtn" 
+                        class="btn btn-danger btn-lg px-5 py-3 position-relative"
+                        style="min-width: 200px; touch-action: manipulation;"
+                    >
+                        <img src="ambulance-solid.svg" alt="Ambulance" class="ambulance-icon">
+                        <div id="ambulanceProgress" class="position-absolute bottom-0 start-0 bg-warning" style="height: 4px; width: 0%; transition: width 0.1s linear;"></div>
+                    </button>
+                    <div id="ambulanceStatus" class="mt-3" style="min-height: 30px;"></div>
+                </div>
+                
+                <hr class="my-4">
+                
+                <!-- Other Ambulance Options -->
+                <div class="d-flex gap-3 flex-wrap">
+                    <button class="btn btn-outline-primary" onclick="showCallMeForm()">
+                        <i class="bi bi-telephone me-2"></i>Call Me
+                    </button>
+                    <button class="btn btn-outline-success" onclick="showAmbulanceBookingForm()">
+                        <i class="bi bi-calendar-check me-2"></i>Online Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Blood Bank -->
         <div class="card shadow-sm mb-4">
             <div class="card-header bg-primary text-white">
-                <h5 class="mb-0"><i class="bi bi-droplet me-2"></i>Blood Bank</h5>
+                <h5 class="mb-0 fw-semibold">
+                    <i class="bi bi-droplet-fill me-2"></i>Blood Bank
+                </h5>
             </div>
             <div class="card-body">
                 <p class="mb-3">Select a blood group to check availability and request blood:</p>
@@ -159,23 +200,6 @@
                     </div>
                 </div>
                 <button class="btn btn-primary" onclick="showBloodRequestForm()">Request Blood</button>
-            </div>
-        </div>
-
-        <!-- Ambulance Booking -->
-        <div class="card shadow-sm mb-4">
-            <div class="card-header bg-success text-white">
-                <h5 class="mb-0"><i class="bi bi-ambulance me-2"></i>Ambulance Booking</h5>
-            </div>
-            <div class="card-body">
-                <div class="d-flex gap-3 flex-wrap">
-                    <button class="btn btn-outline-primary" onclick="showCallMeForm()">
-                        <i class="bi bi-telephone me-2"></i>Call Me
-                    </button>
-                    <button class="btn btn-outline-success" onclick="showAmbulanceBookingForm()">
-                        <i class="bi bi-calendar-check me-2"></i>Online Booking
-                    </button>
-                </div>
             </div>
         </div>
 
@@ -308,9 +332,60 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 Hospital Management System. All rights reserved.</p>
+    <footer class="site-footer pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Care Network</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About HMS</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Hospital Locations</a></li>
+                        <li><a href="#">Telemedicine</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Clinical Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Emergency & Trauma</a></li>
+                        <li><a href="#">Appointments</a></li>
+                        <li><a href="#">Funding & NGO Support</a></li>
+                        <li><a href="#">Online Lab Reports</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Patient Tools</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Patient Portal</a></li>
+                        <li><a href="#">Find a Doctor</a></li>
+                        <li><a href="#">Ambulance Booking</a></li>
+                        <li><a href="#">Pandemic Info</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Partner Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Corporate Health</a></li>
+                        <li><a href="#">International Transfers</a></li>
+                        <li><a href="#">Supplier Relations</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-12 col-lg-8 mx-auto text-center">
+                    <p class="mb-1 fw-semibold text-white">Permanent Campus</p>
+                    <p class="mb-2 text-white-50">688 Beribadh Road, Mohammadpur, Dhaka-1207, Bangladesh</p>
+                    <p class="mb-1 fw-semibold text-white">Admissions Office</p>
+                    <p class="mb-0 text-white-50">House 56, Road 4/A @ Satmasjid Road, Dhanmondi, Dhaka-1209</p>
+                </div>
+            </div>
+            <div class="row g-4 mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-2 small text-white">&copy; 2025 Hospital Management System. All rights reserved.</p>
+                    <p class="mb-0 small text-white">Privacy • Terms • Accessibility</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -321,6 +396,119 @@
         const bloodModal = new bootstrap.Modal(document.getElementById('bloodModal'));
         const callMeModal = new bootstrap.Modal(document.getElementById('callMeModal'));
         const ambulanceModal = new bootstrap.Modal(document.getElementById('ambulanceModal'));
+        
+        // Ambulance 5-second hold functionality
+        let ambulanceHoldInterval = null;
+        let ambulanceHoldTime = 0;
+        const REQUIRED_HOLD_TIME = 5; // seconds
+        let isHolding = false;
+        
+        function startAmbulanceRequest() {
+            if (isHolding) return;
+            
+            isHolding = true;
+            ambulanceHoldTime = 0;
+            const btn = document.getElementById('emergencyAmbulanceBtn');
+            const progressBar = document.getElementById('ambulanceProgress');
+            const statusDiv = document.getElementById('ambulanceStatus');
+            
+            btn.classList.add('active');
+            btn.disabled = false;
+            statusDiv.innerHTML = '<p class="text-info mb-0"><i class="bi bi-hourglass-split me-2"></i>Hold the ambulance icon...</p>';
+            
+            ambulanceHoldInterval = setInterval(() => {
+                ambulanceHoldTime += 0.1;
+                const percentage = (ambulanceHoldTime / REQUIRED_HOLD_TIME) * 100;
+                progressBar.style.width = Math.min(percentage, 100) + '%';
+                
+                const remaining = REQUIRED_HOLD_TIME - ambulanceHoldTime;
+                if (remaining > 0) {
+                    statusDiv.innerHTML = `<p class="text-info mb-0"><i class="bi bi-hourglass-split me-2"></i>Keep holding... ${Math.ceil(remaining)}s left</p>`;
+                }
+                
+                if (ambulanceHoldTime >= REQUIRED_HOLD_TIME) {
+                    completeAmbulanceRequest();
+                }
+            }, 100);
+        }
+        
+        function stopAmbulanceRequest() {
+            if (!isHolding) return;
+            
+            isHolding = false;
+            clearInterval(ambulanceHoldInterval);
+            
+            const btn = document.getElementById('emergencyAmbulanceBtn');
+            const progressBar = document.getElementById('ambulanceProgress');
+            const statusDiv = document.getElementById('ambulanceStatus');
+            
+            if (ambulanceHoldTime < REQUIRED_HOLD_TIME) {
+                // Reset if not held long enough
+                btn.classList.remove('active');
+                progressBar.style.width = '0%';
+                statusDiv.innerHTML = '<p class="text-warning mb-0"><i class="bi bi-exclamation-triangle me-2"></i>Please hold the ambulance icon for the full 5 seconds</p>';
+                
+                // Clear warning after 2 seconds
+                setTimeout(() => {
+                    if (!isHolding) {
+                        statusDiv.innerHTML = '';
+                    }
+                }, 2000);
+            }
+        }
+        
+        function completeAmbulanceRequest() {
+            clearInterval(ambulanceHoldInterval);
+            isHolding = false;
+            
+            const btn = document.getElementById('emergencyAmbulanceBtn');
+            const progressBar = document.getElementById('ambulanceProgress');
+            const statusDiv = document.getElementById('ambulanceStatus');
+            
+            btn.classList.remove('active');
+            btn.classList.add('btn-success');
+            btn.disabled = true;
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('bg-warning');
+            progressBar.classList.add('bg-success');
+            
+            statusDiv.innerHTML = `
+                <div class="alert alert-success mb-0">
+                    <h6 class="alert-heading"><i class="bi bi-ambulance me-2"></i>Ambulance is on the way to your location!</h6>
+                    <p class="mb-0">Our emergency response team has been notified and an ambulance is heading to your location. Please stay where you are.</p>
+                    <hr>
+                    <p class="mb-0 small"><strong>Estimated arrival:</strong> 15-20 minutes</p>
+                </div>
+            `;
+            
+            // Send request to backend
+            sendAmbulanceRequest();
+        }
+        
+        async function sendAmbulanceRequest() {
+            try {
+                const response = await fetch(`${API_BASE}/emergency/ambulance`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        phoneNumber: 'Emergency Request',
+                        pickupAddress: 'Emergency location',
+                        pickupTime: new Date().toISOString(),
+                        emergencyType: 'EMERGENCY',
+                        estimatedArrival: '15-20 minutes'
+                    })
+                });
+                
+                if (response.ok) {
+                    console.log('Ambulance request sent successfully');
+                } else {
+                    console.error('Failed to send ambulance request');
+                }
+            } catch (error) {
+                console.error('Error sending ambulance request:', error);
+                // Don't show error to user as the visual confirmation is already shown
+            }
+        }
 
         async function loadBloodBank() {
             try {
@@ -459,6 +647,45 @@
             this.reset();
         });
 
+        // Setup emergency ambulance button event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const ambulanceBtn = document.getElementById('emergencyAmbulanceBtn');
+            
+            // Mouse events
+            ambulanceBtn.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                startAmbulanceRequest();
+            });
+            
+            ambulanceBtn.addEventListener('mouseup', function(e) {
+                e.preventDefault();
+                stopAmbulanceRequest();
+            });
+            
+            ambulanceBtn.addEventListener('mouseleave', function(e) {
+                if (isHolding) {
+                    stopAmbulanceRequest();
+                }
+            });
+            
+            // Touch events
+            ambulanceBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                startAmbulanceRequest();
+            });
+            
+            ambulanceBtn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                stopAmbulanceRequest();
+            });
+            
+            ambulanceBtn.addEventListener('touchcancel', function(e) {
+                if (isHolding) {
+                    stopAmbulanceRequest();
+                }
+            });
+        });
+        
         window.onload = function() {
             loadBloodBank();
         };

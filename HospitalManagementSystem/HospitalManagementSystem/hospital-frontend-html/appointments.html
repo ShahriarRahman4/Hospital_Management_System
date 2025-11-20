@@ -197,9 +197,60 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 Hospital Management System. All rights reserved.</p>
+    <footer class="site-footer pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Care Network</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About HMS</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Hospital Locations</a></li>
+                        <li><a href="#">Telemedicine</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Clinical Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Emergency & Trauma</a></li>
+                        <li><a href="#">Appointments</a></li>
+                        <li><a href="#">Funding & NGO Support</a></li>
+                        <li><a href="#">Online Lab Reports</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Patient Tools</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Patient Portal</a></li>
+                        <li><a href="#">Find a Doctor</a></li>
+                        <li><a href="#">Ambulance Booking</a></li>
+                        <li><a href="#">Pandemic Info</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Partner Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Corporate Health</a></li>
+                        <li><a href="#">International Transfers</a></li>
+                        <li><a href="#">Supplier Relations</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-12 col-lg-8 mx-auto text-center">
+                    <p class="mb-1 fw-semibold text-white">Permanent Campus</p>
+                    <p class="mb-2 text-white-50">688 Beribadh Road, Mohammadpur, Dhaka-1207, Bangladesh</p>
+                    <p class="mb-1 fw-semibold text-white">Admissions Office</p>
+                    <p class="mb-0 text-white-50">House 56, Road 4/A @ Satmasjid Road, Dhanmondi, Dhaka-1209</p>
+                </div>
+            </div>
+            <div class="row g-4 mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-2 small text-white">&copy; 2025 Hospital Management System. All rights reserved.</p>
+                    <p class="mb-0 small text-white">Privacy • Terms • Accessibility</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -300,20 +351,14 @@
             try {
                 const response = await fetch(`${API_BASE}/doctors`);
                 const doctors = await response.json();
-                displayDoctors(doctors, 'allDoctorsList');
+                displayDoctorsGrouped(doctors, 'allDoctorsList');
             } catch (error) {
                 console.error('Error loading all doctors:', error);
             }
         }
 
-        function displayDoctors(doctors, containerId) {
-            const container = document.getElementById(containerId);
-            if (doctors.length === 0) {
-                container.innerHTML = '<div class="col-12"><p class="text-center text-muted">No doctors found.</p></div>';
-                return;
-            }
-
-            container.innerHTML = doctors.map(doctor => `
+        function getDoctorCardTemplate(doctor) {
+            return `
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
@@ -324,6 +369,47 @@
                             <p class="card-text"><strong>Available:</strong> ${doctor.isAvailable ? 'Yes' : 'No'}</p>
                             <button class="btn btn-primary w-100" onclick="showDoctorProfile(${doctor.id})">View Profile & Book</button>
                         </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function displayDoctors(doctors, containerId) {
+            const container = document.getElementById(containerId);
+            if (doctors.length === 0) {
+                container.innerHTML = '<div class="col-12"><p class="text-center text-muted">No doctors found.</p></div>';
+                return;
+            }
+
+            container.innerHTML = doctors.map(getDoctorCardTemplate).join('');
+        }
+
+        function displayDoctorsGrouped(doctors, containerId) {
+            const container = document.getElementById(containerId);
+            if (doctors.length === 0) {
+                container.innerHTML = '<div class="col-12"><p class="text-center text-muted">No doctors found.</p></div>';
+                return;
+            }
+
+            const grouped = doctors.reduce((acc, doctor) => {
+                const dept = doctor.department || 'General';
+                if (!acc[dept]) {
+                    acc[dept] = [];
+                }
+                acc[dept].push(doctor);
+                return acc;
+            }, {});
+
+            const sortedDepartments = Object.keys(grouped).sort();
+
+            container.innerHTML = sortedDepartments.map(dept => `
+                <div class="col-12">
+                    <div class="d-flex align-items-center bg-light rounded px-3 py-2 mb-3 border-start border-4 border-primary">
+                        <i class="bi bi-diagram-3 text-primary me-2"></i>
+                        <h5 class="mb-0">${dept}</h5>
+                    </div>
+                    <div class="row g-3 mb-4">
+                        ${grouped[dept].map(getDoctorCardTemplate).join('')}
                     </div>
                 </div>
             `).join('');

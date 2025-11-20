@@ -67,14 +67,47 @@ function displayDoctors(doctors) {
         return;
     }
     
-    container.innerHTML = `
-        <div class="mb-3">
+    // Group doctors by department
+    const doctorsByDepartment = {};
+    doctors.forEach(doctor => {
+        const dept = doctor.department || 'Other';
+        if (!doctorsByDepartment[dept]) {
+            doctorsByDepartment[dept] = [];
+        }
+        doctorsByDepartment[dept].push(doctor);
+    });
+    
+    // Sort departments alphabetically
+    const sortedDepartments = Object.keys(doctorsByDepartment).sort();
+    
+    // Build HTML with departments and their doctors
+    let html = `
+        <div class="mb-4">
             <p class="text-muted">Showing ${doctors.length} of ${allDoctors.length} doctors</p>
         </div>
-        <div class="row g-4">
-            ${doctors.map(doctor => createDoctorCard(doctor)).join('')}
-        </div>
     `;
+    
+    sortedDepartments.forEach(department => {
+        const departmentDoctors = doctorsByDepartment[department];
+        html += `
+            <div class="mb-5">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                        <i class="bi bi-building fs-4 text-primary"></i>
+                    </div>
+                    <div>
+                        <h2 class="fw-bold mb-0">${department}</h2>
+                        <p class="text-muted small mb-0">${departmentDoctors.length} doctor${departmentDoctors.length !== 1 ? 's' : ''}</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    ${departmentDoctors.map(doctor => createDoctorCard(doctor)).join('')}
+                </div>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
 }
 
 function createDoctorCard(doctor) {
