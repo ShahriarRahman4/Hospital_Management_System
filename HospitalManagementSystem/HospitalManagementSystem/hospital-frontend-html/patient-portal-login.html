@@ -7,12 +7,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Add padding to body to accommodate fixed navbar */
+        body {
+            padding-top: 60px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container-fluid d-flex align-items-center h-100 px-3">
+            <a class="navbar-brand d-flex align-items-center ms-4" href="index.html">
                 <i class="bi bi-heart-pulse-fill text-primary me-2 fs-4"></i>
                 <span class="fw-bold">HMS</span>
             </a>
@@ -25,7 +31,12 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
                     <li class="nav-item"><a class="nav-link" href="departments.html">Departments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="emergency.html">Emergency</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#specialities">Specialities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="emergency.html">Emergency &amp; Contact</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto me-4">
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
                 </ul>
             </div>
         </div>
@@ -78,9 +89,6 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="reports-tab" data-bs-toggle="tab" data-bs-target="#reports" type="button" role="tab">Current Reports</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="transfer-tab" data-bs-toggle="tab" data-bs-target="#transfer" type="button" role="tab">Transfer & Equipment</button>
-                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="personal" role="tabpanel">
@@ -108,61 +116,6 @@
                             <p class="text-center text-muted py-5">Loading reports...</p>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="transfer" role="tabpanel">
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <h5 class="mb-0">Request Hospital Transfer</h5>
-                            </div>
-                            <div class="card-body">
-                                <form id="transferForm">
-                                    <div class="mb-3">
-                                        <label class="form-label">Select Preferred Hospitals (2-3)</label>
-                                        <select class="form-select" id="hospitalSelect" multiple size="5">
-                                            <option>Square Hospital</option>
-                                            <option>Dhaka Medical College</option>
-                                            <option>LabAID</option>
-                                            <option>Green Life Hospital</option>
-                                            <option>Ibn Sina Hospital</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Reason for Transfer</label>
-                                        <textarea class="form-control" id="transferReason" rows="3" required></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Require Ambulance?</label>
-                                        <select class="form-select" id="ambulanceRequired">
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Preferred Time Slot</label>
-                                        <input type="datetime-local" class="form-control" id="transferTime" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit Transfer Request</button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <h5 class="mb-0">Borrow Medical Equipment</h5>
-                            </div>
-                            <div class="card-body">
-                                <p>Contact the hospital administration for equipment borrowing.</p>
-                                <button class="btn btn-outline-primary">Request Equipment</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">Request Rare Medicines</h5>
-                            </div>
-                            <div class="card-body">
-                                <p>Submit a request for rare or loose medicines.</p>
-                                <button class="btn btn-outline-primary">Request Medicine</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <button class="btn btn-secondary mt-3" onclick="logout()">Logout</button>
             </div>
@@ -170,9 +123,60 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 Hospital Management System. All rights reserved.</p>
+    <footer class="site-footer pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Care Network</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About HMS</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Hospital Locations</a></li>
+                        <li><a href="#">Telemedicine</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Clinical Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Emergency & Trauma</a></li>
+                        <li><a href="#">Appointments</a></li>
+                        <li><a href="#">Funding & NGO Support</a></li>
+                        <li><a href="#">Online Lab Reports</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Patient Tools</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Patient Portal</a></li>
+                        <li><a href="#">Find a Doctor</a></li>
+                        <li><a href="#">Ambulance Booking</a></li>
+                        <li><a href="#">Pandemic Info</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="footer-heading">Partner Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Corporate Health</a></li>
+                        <li><a href="#">International Transfers</a></li>
+                        <li><a href="#">Supplier Relations</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-12 col-lg-8 mx-auto text-center">
+                    <p class="mb-1 fw-semibold text-white">Permanent Campus</p>
+                    <p class="mb-2 text-white-50">688 Beribadh Road, Mohammadpur, Dhaka-1207, Bangladesh</p>
+                    <p class="mb-1 fw-semibold text-white">Admissions Office</p>
+                    <p class="mb-0 text-white-50">House 56, Road 4/A @ Satmasjid Road, Dhanmondi, Dhaka-1209</p>
+                </div>
+            </div>
+            <div class="row g-4 mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-2 small text-white">&copy; 2025 Hospital Management System. All rights reserved.</p>
+                    <p class="mb-0 small text-white">Privacy • Terms • Accessibility</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -266,11 +270,6 @@
                 document.getElementById('reportsList').innerHTML = '<p class="text-center text-danger py-5">Error loading reports.</p>';
             }
         }
-
-        document.getElementById('transferForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            alert('Transfer request submitted! You will be notified of the hospital\'s response.');
-        });
     </script>
 </body>
 </html>
